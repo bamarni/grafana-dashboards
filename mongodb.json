@@ -1,5 +1,5 @@
 {
-  "id": 1,
+  "id": 7,
   "title": "MongoDB",
   "tags": [],
   "style": "dark",
@@ -44,7 +44,7 @@
   },
   "refresh": false,
   "schemaVersion": 13,
-  "version": 5,
+  "version": 1,
   "links": [],
   "gnetId": null,
   "rows": [
@@ -217,79 +217,79 @@
       "title": "Dashboard Row",
       "panels": [
         {
-          "aliasColors": {},
-          "bars": false,
-          "datasource": null,
-          "editable": true,
+          "id": 5,
+          "title": "Memory",
           "error": false,
-          "fill": 1,
-          "id": 3,
-          "legend": {
-            "avg": false,
-            "current": false,
-            "max": false,
-            "min": false,
-            "show": true,
-            "total": false,
-            "values": false
-          },
-          "lines": true,
-          "linewidth": 1,
-          "links": [],
-          "nullPointMode": "connected",
-          "percentage": false,
-          "pointradius": 5,
-          "points": false,
-          "renderer": "flot",
-          "seriesOverrides": [],
           "span": 6,
-          "stack": false,
-          "steppedLine": false,
+          "editable": true,
+          "type": "graph",
           "targets": [
             {
               "expr": "mongodb_memory",
               "intervalFactor": 2,
-              "legendFormat": "{{type}}",
-              "metric": "mongodb_memory",
               "refId": "A",
-              "step": 60
+              "metric": "mongodb_memory",
+              "step": 60,
+              "legendFormat": "{{type}}"
             }
           ],
-          "thresholds": [],
-          "timeFrom": null,
-          "timeShift": null,
-          "title": "Memory",
-          "tooltip": {
-            "msResolution": false,
-            "shared": true,
-            "sort": 0,
-            "value_type": "individual"
-          },
-          "type": "graph",
-          "xaxis": {
-            "mode": "time",
-            "name": null,
-            "show": true,
-            "values": []
-          },
+          "datasource": null,
+          "renderer": "flot",
           "yaxes": [
             {
-              "format": "short",
               "label": null,
+              "show": true,
               "logBase": 1,
-              "max": null,
               "min": null,
-              "show": true
+              "max": null,
+              "format": "short"
             },
             {
-              "format": "short",
               "label": null,
+              "show": true,
               "logBase": 1,
-              "max": null,
               "min": null,
-              "show": true
+              "max": null,
+              "format": "short"
             }
-          ]
+          ],
+          "xaxis": {
+            "show": true,
+            "mode": "time",
+            "name": null,
+            "values": []
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "shared": true,
+            "sort": 0,
+            "msResolution": false
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "thresholds": [],
+          "links": []
         },
         {
           "aliasColors": {},
@@ -322,7 +322,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "rate(mongodb_op_counters_total{type!~\"command|getmore\"}[1m])",
+              "expr": "irate(mongodb_op_counters_total{type!~\"command|getmore\"}[1m])",
               "intervalFactor": 2,
               "legendFormat": "{{type}}",
               "metric": "mongodb_op_counters_total",
@@ -333,7 +333,7 @@
           "thresholds": [],
           "timeFrom": null,
           "timeShift": null,
-          "title": "Operations",
+          "title": "Operations / sec",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -349,7 +349,7 @@
           },
           "yaxes": [
             {
-              "format": "short",
+              "format": "ops",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -357,7 +357,7 @@
               "show": true
             },
             {
-              "format": "short",
+              "format": "none",
               "label": null,
               "logBase": 1,
               "max": null,
@@ -367,17 +367,6 @@
           ]
         }
       ],
-      "showTitle": false,
-      "titleSize": "h6",
-      "height": 250,
-      "repeat": null,
-      "repeatRowId": null,
-      "repeatIteration": null,
-      "collapse": false
-    },
-    {
-      "title": "Dashboard Row",
-      "panels": [],
       "showTitle": false,
       "titleSize": "h6",
       "height": 250,
